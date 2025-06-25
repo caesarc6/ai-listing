@@ -5,6 +5,8 @@ export interface ListingCardProps {
   title: string;
   description: string;
   createdAt: string;
+  onClick?: () => void;
+  onDelete?: () => void;
 }
 
 export default function ListingCard({
@@ -12,9 +14,19 @@ export default function ListingCard({
   title,
   description,
   createdAt,
+  onClick,
+  onDelete,
 }: ListingCardProps) {
   return (
-    <div className="flex flex-col sm:flex-row gap-4 p-4 bg-white rounded shadow-sm">
+    <div
+      className={`flex flex-col sm:flex-row gap-4 p-4 bg-white rounded shadow-sm transition cursor-pointer hover:shadow-md ${
+        onClick ? "hover:bg-gray-50" : ""
+      }`}
+      onClick={onClick}
+      tabIndex={onClick ? 0 : undefined}
+      role={onClick ? "button" : undefined}
+      style={{ outline: "none" }}
+    >
       <img
         src={imageUrl}
         alt={title}
@@ -29,6 +41,17 @@ export default function ListingCard({
           {new Date(createdAt).toLocaleString()}
         </span>
       </div>
+      {onDelete && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete();
+          }}
+          className="ml-4 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-xs self-start"
+        >
+          Delete
+        </button>
+      )}
     </div>
   );
 }

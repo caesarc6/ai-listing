@@ -66,7 +66,7 @@ export const HeroHeader = () => {
                 aria-label="home"
                 className="flex items-center space-x-2"
               >
-                <Logo />
+                Image Track AI
               </Link>
 
               <button
@@ -117,6 +117,16 @@ export const HeroHeader = () => {
                       size="sm"
                       className={cn(isScrolled && "lg:hidden")}
                     >
+                      <Link href="/analyze">
+                        <span>Analyze</span>
+                      </Link>
+                    </Button>
+                    <Button
+                      asChild
+                      variant="ghost"
+                      size="sm"
+                      className={cn(isScrolled && "lg:hidden")}
+                    >
                       <Link href="/auth/login">
                         <span>Login</span>
                       </Link>
@@ -145,11 +155,22 @@ export const HeroHeader = () => {
                     </Button>
                     <Button
                       asChild
+                      variant="ghost"
                       size="sm"
                       className={cn(isScrolled && "lg:hidden")}
                     >
                       <Link href="/upload">
                         <span>Upload</span>
+                      </Link>
+                    </Button>
+                    <Button
+                      asChild
+                      variant="ghost"
+                      size="sm"
+                      className={cn(isScrolled && "lg:hidden")}
+                    >
+                      <Link href="/analyze">
+                        <span>Analyze</span>
                       </Link>
                     </Button>
                     <Button
